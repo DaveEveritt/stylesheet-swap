@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/persistent.css">
+  <link rel="stylesheet" href="styles/default.css" title="default">
+  <link rel="alternate stylesheet" href="styles/light.css" title="light">
+  <link rel="alternate stylesheet" href="styles/dark.css" title="dark">
+</head>
+<body>
+  <h1>Change stylesheet script</h1>
+
+  <p>Cross-browser version. Needs "node.disabled", which is used to toggle the 'disabled' attribute in unwanted stylesheets.</p>
+  
+  <button onclick="styleswap('default')">default</button>
+  <button onclick="styleswap('light')">light</button>
+  <button onclick="styleswap('dark')">dark</button>
+
+<script>
+function enableStylesheet (node) {
+ node.rel = "stylesheet";
+ node.disabled = false;
+}
+function disableStylesheet (node) {
+ node.rel = "alternate stylesheet";
+ node.disabled = true;
+}
+
+const styleswap = (st) => {
+  const getstyle = document.querySelector(`[title~=${st}]`);
+  document.querySelectorAll('link[title]')
+          .forEach(disableStylesheet);
+  // console.log(getstyle);
+  enableStylesheet(getstyle);
+  // console.log(getstyle);
+}
+
+</script>
+</body>
+</html>

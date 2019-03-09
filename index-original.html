@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles/main.css" id="main">
+  <link rel="stylesheet" href="styles/light.css" id="light" class="alternate">
+  <link rel="stylesheet" href="styles/dark.css" id="dark" class="alternate">
+</head>
+<body>
+  <h1>
+    Change stylesheet
+  </h1>
+  <button onclick="styleswap('main')">style main</button>
+  <button onclick="styleswap('light')">style light</button>
+  <button onclick="styleswap('dark')">style dark</button>
+<script>
+function enableStylesheet (node) {
+ node.disabled = false;
+}
+function disableStylesheet (node) {
+ node.disabled = true;
+}
+document.querySelectorAll('link[rel=stylesheet].alternate')
+       .forEach(disableStylesheet);
+
+const styleswap = (st) => {
+  const getstyle = document.getElementById(st)
+  document.querySelectorAll('link[rel=stylesheet]')
+          .forEach(disableStylesheet);
+  enableStylesheet(getstyle);
+}
+
+</script>
+</body>
+</html>
